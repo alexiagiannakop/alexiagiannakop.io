@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="el">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="description" content="Free Web tutorials">
+	<meta name="keywords" content="HTML, CSS, JavaScript">
+	<meta name="author" content="John Doe">
+	<link rel="stylesheet" href="style.css">
+	
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+	 <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
+	 <link rel="stylesheet" href="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.css" />
+	<!-- Make sure you put this AFTER Leaflet's CSS -->
+	<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" 
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
+	 <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.js"></script>
+	 <script src="https://unpkg.com/leaflet-control-geocoder/dist/Control.Geocoder.js"></script>
+</head>
+<body>
+	 <div id="map"></div>
+</body>
+<script>
+	var map = L.map('map').setView([37.94296740923939, 23.644866810129752], 17);
+	
+	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    maxZoom: 19}).addTo(map);
+	
+	L.Control.geocoder().addTo(map);
+	
+	L.Routing.control({
+		waypoints: [
+			L.latLng(37.94285860655428, 23.645488899700446),
+			L.latLng(37.94825453307979, 23.647283252129025),
+		    L.latLng(37.9373019687468, 23.644667590437503),
+			L.latLng(37.93722562271429, 23.644071064495822),
+			 
+		],
+		routeWhileDragging: true,
+
+		geocoder: L.Control.Geocoder.nominatim()
+	}).addTo(map); 
+	
+
+	var pirmark_iekakmi = L.marker([37.94285860655428, 23.645488899700446],{alt: 'ΙΕΚ ΑΚΜΗ Πειραιά'}).addTo(map);
+	var pirmark_troumpa = L.marker([37.94825453307979, 23.647283252129025],{alt: 'Τρούμπα Πειραιάς'}).addTo(map);
+	var pirmark_arxaiotheatrozeas = L.marker([37.9373019687468, 23.644667590437503],{alt: 'Αρχαίο Θέατρο Ζέας'}).addTo(map);
+	var pirmark_arxaiologikomouseio = L.marker([37.93722562271429, 23.644071064495822],{alt: 'Αρχαιολογικό Μουσείο Πειραιά'}).addTo(map);
+	
+	
+	
+	pirfmark_iekakmi.bindPopup("<b>ΙΕΚ ΑΚΜΗ Πειραιά</b><a href='#'>Link</a>").popup();
+	pirfmark_troumpapeiraias.bindPopup("<b>Τρούμπα</b><a href='index.html#C1'>Περισσότερα</a>").popup();
+	pirfmark_arxaiotheatrozeas.bindPopup("<b>Αρχαίο Θέατρο Ζέας</b>").popup();
+	pirfmark_nautikomouseio.bindPopup("<b>Αρχαιολογικό Μουσείο Πειραιά</b>").popup();
+	
+	function createButton(label, container) {
+		var btn = L.DomUtil.create('button', '', container);
+		btn.setAttribute('type', 'button');
+		btn.innerHTML = label;
+		return btn;
+}
+
+map.on('click', function(e) {
+    var container = L.DomUtil.create('div'),
+        startBtn = createButton('Start from this location', container),
+        destBtn = createButton('Go to this location', container);
+
+    L.popup()
+        .setContent(container)
+        .setLatLng(e.latlng)
+        .openOn(map);
+});
+
+</script>
+
+</html>

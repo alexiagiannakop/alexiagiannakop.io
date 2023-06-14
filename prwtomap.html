@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="el">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta charset="UTF-8">
+	<meta name="description" content="Free Web tutorials">
+	<meta name="keywords" content="HTML, CSS, JavaScript">
+	<meta name="author" content="John Doe">
+	<link rel="stylesheet" href="style.css">
+	
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+	 
+	<!-- Make sure you put this AFTER Leaflet's CSS -->
+	<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" 
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
+	 
+</head>
+<body>
+	<div id="map"></div>
+</body>
+<script>
+	var map = L.map('map').setView([37.94296740923939, 23.644866810129752], 17);
+	
+	L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+		maxZoom: 19
+	}).addTo(map);
+	
+	var pirmark_iekakmi = L.marker([37.94285860655428, 23.645488899700446], {alt: 'ΙΕΚ ΑΚΜΗ Πειραιά'}).addTo(map);
+	var pirmark_troumpa = L.marker([37.94825453307979, 23.647283252129025], {alt: 'Τρούμπα Πειραιάς'}).addTo(map);
+	var pirmark_arxaiotheatrozeas = L.marker([37.94825453307979, 23.647283252129025], {alt: 'Αρχαίο Θέατρο Ζέας'}).addTo(map);
+	var pirmark_arxaiologikomouseio = L.marker([37.93722562271429, 23.644071064495822], {alt: 'Αρχαιολογικό Μουσείο Πειραιά'}).addTo(map);
+	var pirmark_dhmotikotheatro = L.marker([37.94340993740348, 23.64690322365917], {alt: 'Δημοτικό Θέατρο Πειραιά'}).addTo(map);
+	var pirmark_dhmotikhpinakothiki = L.marker([37.94529863073729, 23.64685198535804], {alt: 'Δημοτική Πινακοθήκη Πειραιά'}).addTo(map);
+	var pirmark_nautikomouseio = L.marker([37.93248174562282, 23.646060783712556], {alt: 'Ναυτικό Μουσείο Ελλάδος'}).addTo(map);
+	var pirmark_mikrolimano = L.marker([37.93773783448146, 23.659305407563696], {alt: 'Μικρολίμανο'}).addTo(map);
+	var pirmark_marinazeas = L.marker([37.937646433612, 23.64680408503579], {alt: 'Μαρίνα Ζέας'}).addTo(map);
+	var pirmark_peiraiki = L.marker([37.93099682262566, 23.63088457953723], {alt: 'Πειραϊκή'}).addTo(map);
+	
+	
+	pirmark_troumpa.bindPopup("<b>Τρούμπα</b><br><a href='index.html#C1'>Περισσότερα</a>").openPopup();
+	pirmark_arxaiotheatrozeas.bindPopup("<b>Αρχαίο Θέατρο Ζέας</b><br><a href='index.html#C2'>Περισσότερα</a>").openPopup();
+	pirmark_arxaiologikomouseio.bindPopup("<b>Αρχαιολογικό Μουσείο Πειραιά</b><br><a href='index.html#C3'>Περισσότερα</a>").openPopup();
+	pirmark_dhmotikotheatro.bindPopup("<b>Δημοτικό Θέατρο Πειραιά</b><br><a href='index.html#C4'>Περισσότερα</a>").openPopup();
+	pirmark_dhmotikhpinakothiki.bindPopup("<b>Δημοτική Πινακοθήκη Πειραιά</b><br><a href='index.html#C5'>Περισσότερα</a>").openPopup();
+	pirmark_nautikomouseio.bindPopup("<b>Ναυτικό Μουσείο Ελλάδος</b><br><a href='index.html#C6'>Περισσότερα</a>").openPopup();
+	pirmark_mikrolimano.bindPopup("<b>Μικρολίμανο</b><br><a href='index.html#C7'>Περισσότερα</a>").openPopup();
+	pirmark_marinazeas.bindPopup("<b>Μαρίνα Ζέας</b><br><a href='index.html#C8'>Περισσότερα</a>").openPopup();
+	pirmark_peiraiki.bindPopup("<b>Πειραϊκή</b><br><a href='index.html#C9'>Περισσότερα</a>").openPopup();
+	pirmark_iekakmi.bindPopup("<b>ΙΕΚ ΑΚΜΗ Πειραιά</b><br><a href='https://www.iek-akmi.edu.gr'>Περισσότερα</a>").openPopup();
+</script>
+</html>
